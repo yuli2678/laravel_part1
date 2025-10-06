@@ -117,7 +117,7 @@
 
     <!-- Container -->
     <div class="container">
-        <h2>Daftar Novel Elegan</h2>
+        <h2>Daftar Novel</h2>
 
         <!-- Search -->
         <div class="search-box">
@@ -177,7 +177,7 @@
 
     <!-- Footer -->
     <footer>
-        &copy; 2025 Data Novel | Dibuat oleh Ulia 💜
+        &copy; 2025 Data Novel | Dibuat oleh yuli
     </footer>
 
     <!-- Script Search -->
