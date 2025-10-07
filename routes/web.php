@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NovelController;
 
+// Halaman utama
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home'); 
-})->name('home');
+// Halaman home pakai controller
+Route::get('/home', [NovelController::class, 'index'])->name('home');

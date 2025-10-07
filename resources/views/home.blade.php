@@ -5,193 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Novel</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #2c3e50, #4a148c);
+        color: #fff;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .search-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .search-container input[type="text"] {
+        padding: 10px;
+        width: 250px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+    }
+    .search-container button {
+        padding: 10px 20px;
+        background: #6a1b9a;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    .search-container button:hover {
+        background: #4a148c;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #e9e4f0, #d3cce3);
-            color: #333;
-            padding-bottom: 60px;
-        }
+    /* 🌟 Tabel Rapi */
+    table {
+        width: 90%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background: rgba(255,255,255,0.95);
+        color: #333;
+        border-radius: 8px;
+        overflow: hidden;
+        table-layout: fixed; /* kolom proporsional */
+    }
 
-        /* Navbar */
-        nav {
-            background: linear-gradient(to right, #5c258d, #4389a2);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        nav h1 {
-            font-size: 26px;
-            font-weight: 600;
-        }
+    th, td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ddd;
+        vertical-align: middle;
+    }
 
-        /* Container */
-        .container {
-            max-width: 950px;
-            margin: 50px auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
+    th {
+        background: #4a148c;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+    }
 
-        h2 {
-            text-align: center;
-            font-size: 28px;
-            background: linear-gradient(to right, #5c258d, #4389a2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
+    /* 🌟 Set lebar kolom agar rata */
+    th:nth-child(1), td:nth-child(1) { width: 7%; text-align: center; }
+    th:nth-child(2), td:nth-child(2) { width: 30%; text-align: left; }
+    th:nth-child(3), td:nth-child(3) { width: 25%; text-align: left; }
+    th:nth-child(4), td:nth-child(4) { width: 23%; text-align: left; }
+    th:nth-child(5), td:nth-child(5) { width: 15%; text-align: center; }
 
-        /* Search box */
-        .search-box {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        .search-box input {
-            padding: 10px 14px;
-            width: 280px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            outline: none;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-        .search-box input:focus {
-            border-color: #5c258d;
-            box-shadow: 0 0 8px rgba(92,37,141,0.3);
-        }
+    tr:hover {
+        background: #f3e5f5;
+    }
+</style>
 
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        thead {
-            background: linear-gradient(to right, #5c258d, #4389a2);
-            color: white;
-        }
-        th, td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        tbody tr:hover {
-            background: rgba(92,37,141,0.05);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(to right, #5c258d, #4389a2);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            font-size: 14px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 600px) {
-            .search-box input { width: 100%; }
-            h2 { font-size: 22px; }
-        }
-    </style>
 </head>
 <body>
+    <h1>Daftar Novel</h1>
 
-    <!-- Navbar -->
-    <nav>
-        <h1>📚 Data Novel</h1>
-    </nav>
-
-    <!-- Container -->
-    <div class="container">
-        <h2>Daftar Novel</h2>
-
-        <!-- Search -->
-        <div class="search-box">
-            <input type="text" id="search" placeholder="Cari judul atau pengarang...">
-        </div>
-
-        <!-- Table -->
-        <table id="novelTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Judul Novel</th>
-                    <th>Pengarang</th>
-                    <th>Penerbit</th>
-                    <th>Tahun Terbit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Laskar Pelangi</td>
-                    <td>Andrea Hirata</td>
-                    <td>Bentang Pustaka</td>
-                    <td>2005</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Perahu Kertas</td>
-                    <td>Dee Lestari</td>
-                    <td>Bentang Pustaka</td>
-                    <td>2009</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dilan 1990</td>
-                    <td>Pidi Baiq</td>
-                    <td>Pastel Books</td>
-                    <td>2014</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ayat-Ayat Cinta</td>
-                    <td>Habiburrahman El Shirazy</td>
-                    <td>Republika</td>
-                    <td>2004</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Bumi</td>
-                    <td>Tere Liye</td>
-                    <td>Gramedia</td>
-                    <td>2014</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form method="GET" action="{{ route('home') }}">
+            <input type="text" name="search" placeholder="Cari judul atau pengarang..." value="{{ $keyword }}">
+            <button type="submit">Cari</button>
+        </form>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2025 Data Novel | Dibuat oleh yuli
-    </footer>
-
-    <!-- Script Search -->
-    <script>
-        document.getElementById('search').addEventListener('keyup', function() {
-            const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#novelTable tbody tr');
-
-            rows.forEach(row => {
-                const cellsText = row.innerText.toLowerCase();
-                row.style.display = cellsText.includes(filter) ? '' : 'none';
-            });
-        });
-    </script>
-
+    <!-- Table Novel -->
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Judul</th>
+                <th>Pengarang</th>
+                <th>Penerbit</th>
+                <th>Tahun Terbit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($novels as $index => $novel)
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $novel['judul'] }}</td>
+                <td>{{ $novel['pengarang'] }}</td>
+                <td>{{ $novel['penerbit'] }}</td>
+                <td>{{ $novel['tahun'] }}</td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="5">Data tidak ditemukan</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 </body>
 </html>
