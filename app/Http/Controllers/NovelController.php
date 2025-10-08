@@ -41,8 +41,10 @@ class NovelController extends Controller
         }
 
         return view('home', [
-            'novels' => $novels,
-            'keyword' => $keyword
-        ]);
+    'novels' => $novels,
+    'keyword' => $keyword,
+    'message' => 'Selamat datang di Koleksi Novel!'
+]);
+
     }
 }

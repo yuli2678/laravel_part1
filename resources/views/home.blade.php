@@ -65,7 +65,6 @@
         font-weight: bold;
     }
 
-    /* 🌟 Set lebar kolom agar rata */
     th:nth-child(1), td:nth-child(1) { width: 7%; text-align: center; }
     th:nth-child(2), td:nth-child(2) { width: 30%; text-align: left; }
     th:nth-child(3), td:nth-child(3) { width: 25%; text-align: left; }
@@ -80,6 +79,9 @@
 </head>
 <body>
     <h1>Daftar Novel</h1>
+@if(isset($message))
+    <p style="text-align:center; font-size:18px; margin-bottom:20px;">{{ $message }}</p>
+@endif
 
     <!-- Search Bar -->
     <div class="search-container">
